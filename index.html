@@ -455,7 +455,9 @@ const TICKS=['מחובר לפיקוד העורף — עדכון כל 2 שניו�
 (()=>{const el=document.getElementById('tickerEl');if(!el)return;const items=[...TICKS,...TICKS];el.innerHTML=items.map(t=>`<span class="tick-item"><span class="tick-dot"></span>${t}</span>`).join('');})();
 
 // ══ WEBSOCKET ══
-const WS_URL=`ws://${location.hostname||'localhost'}:3000`;
+const WS_URL = location.hostname === 'localhost' 
+  ? `ws://localhost:3000`
+  : `wss://${location.hostname}`;
 let ws=null,wsConn=false,wsRTmr=null,newAlerts=0;
 
 function setConn(s){
