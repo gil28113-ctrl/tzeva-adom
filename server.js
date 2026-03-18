@@ -22,6 +22,7 @@ const wss    = new WebSocket.Server({ server });
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // ── VAPID KEYS ─────────────────────────────────────────────
 let VAPID;
