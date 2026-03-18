@@ -17,7 +17,9 @@ app.use(express.json());
 // קבצים סטטיים — מהתיקיה הראשית
 app.use(express.static(__dirname));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  const f = path.join(__dirname, 'index.html');
+  console.log('מחפש index.html ב:', f);
+  res.sendFile(f);
 });
 
 // VAPID
